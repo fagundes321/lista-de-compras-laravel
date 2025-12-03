@@ -2,11 +2,12 @@
 
     <a href="compras/criar">Adicionar novas compras</a>
 
-    <ul>
+    <ul class="list-group">
         @foreach ($compras as $compra)
-            <li>{{$compra}}</li>
+            <li class="list-group-item">{{$compra}}</li>
         @endforeach
     </ul>
+
 
     <script>
 
