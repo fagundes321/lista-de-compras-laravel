@@ -7,4 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/compras', [ComprasController::class, 'listarCompras']);
+Route::get('/compras', [ComprasController::class, 'index']);
+Route::get('/compras/criar', [ComprasController::class, 'create']);

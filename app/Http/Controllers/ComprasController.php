@@ -7,23 +7,24 @@ use Illuminate\Http\Request;
 class ComprasController extends Controller
 {
 
-     public function listarCompras(){
+    public function index(Request $request)
+    {
+
 
         $compras = [
             'arroz',
             'feijão',
-            'carne'
+            'carne',
         ];
 
-        $html = '<ul>';
+        return view('compras.index')->with('compras', $compras);
+    }
 
-        foreach($compras as $compra){
-            $html .= "<li>$compra</li>";
-        }
 
-        $html .= '</ul>';
+     public function create(){
 
-        echo $html;
+        return view("compras.create");
+
     }
 
 }
