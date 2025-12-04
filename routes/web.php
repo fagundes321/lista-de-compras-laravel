@@ -8,7 +8,8 @@ Route::get('/', function () {
 });
 
 
-Route::resource('/compras', ComprasController::class)->only(['index', 'create', 'store', 'destroy']);
-// Route::post('/compras/destroy/{compra}', [ComprasController::class, 'destroy'])->name('compras.destroy');
+Route::resource('/compras', ComprasController::class)->except(['show']);
 
+// Route::get('/compras/editar/{compra}', [ComprasController::class, 'edit'])->name('compras.edit');
+// Route::get('/compras/update/{compra}', [ComprasController::class,  'update'])->name('compras.update');
 

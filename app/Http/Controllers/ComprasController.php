@@ -15,11 +15,11 @@ class ComprasController extends Controller
 
         $compras = Compras::all();
         $mensagemSucesso = session('mensagem.sucesso');
+        $mensagemErro = session('mensagem.erro');
 
         return view('compras.index')
-        ->with('compras', $compras)
-        ->with('mensagemSucesso', $mensagemSucesso);
-
+            ->with('compras', $compras)
+            ->with('mensagemSucesso', $mensagemSucesso);
     }
 
 
@@ -27,16 +27,16 @@ class ComprasController extends Controller
     {
 
         return view("compras.create");
-
     }
 
 
     public function store(Request $request)
     {
-
-        $compra = Compras::create($request->all());
-        $request->session()->flash('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
-        return Redirect('/compras');
+        $request->validate([
+            'nome' => ['required', 'min:3']
+        ]);
+            $compra = Compras::create($request->all());
+            return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
 
     }
 
@@ -45,8 +45,22 @@ class ComprasController extends Controller
     {
 
         $compra->delete();
-        $request->session()->flash('mensagem.sucesso', "O item {$compra->nome} foi removido");
-        return redirect('/compras');
+        return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi removido");
+    }
 
+
+    public function edit(Compras $compra, Request $request)
+    {
+
+        return view('compras.edit')->with('compra', $compra);
+    }
+
+    public function update(Compras $compra, Request $request)
+    {
+
+        $compra->fill($request->all());
+        $compra->save();
+
+        return to_route('compras.index')->with('mensagem.sucesso', "Item {$compra->nome} Atualizado");
     }
 }
