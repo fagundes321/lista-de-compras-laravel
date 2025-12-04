@@ -13,11 +13,13 @@ class ComprasController extends Controller
     public function index(Request $request)
     {
 
-
         $compras = Compras::all();
+        $mensagemSucesso = session('mensagem.sucesso');
 
+        return view('compras.index')
+        ->with('compras', $compras)
+        ->with('mensagemSucesso', $mensagemSucesso);
 
-        return view('compras.index')->with('compras', $compras);
     }
 
 
@@ -25,28 +27,26 @@ class ComprasController extends Controller
     {
 
         return view("compras.create");
+
     }
 
 
     public function store(Request $request)
     {
 
-        // $nomeCompra = $request->input('nome');
+        $compra = Compras::create($request->all());
+        $request->session()->flash('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
+        return Redirect('/compras');
 
-        // if ($nomeCompra == '') {
-        //     return Redirect('/compras/criar');
-        // } else {
-            Compras::create($request->all());
-            return Redirect('/compras');
-        // }
     }
 
 
-    public function destroy(Request $request)
+    public function destroy(Compras $compra, Request $request)
     {
-        // dd($request->id);
-        Compras::destroy($request->compra);
 
+        $compra->delete();
+        $request->session()->flash('mensagem.sucesso', "O item {$compra->nome} foi removido");
         return redirect('/compras');
+
     }
 }

@@ -2,6 +2,12 @@
 
     <a href="{{route('compras.create')}}" class="btn btn-dark mb-2">Adicionar novas compras</a>
 
+    @isset($mensagemSucesso)
+        <div class="alert alert-success">
+            {{$mensagemSucesso}}
+        </div>
+    @endisset
+
     <ul class="list-group">
         @foreach ($compras as $compra)
             <li class="list-group-item d-flex justify-content-between" name="{{ $compra->nome }}">
