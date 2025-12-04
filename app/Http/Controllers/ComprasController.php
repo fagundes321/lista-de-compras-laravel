@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SeriesFormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Compras;
@@ -30,11 +31,9 @@ class ComprasController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(SeriesFormRequest $request)
     {
-        $request->validate([
-            'nome' => ['required', 'min:3']
-        ]);
+
             $compra = Compras::create($request->all());
             return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
 
@@ -55,7 +54,7 @@ class ComprasController extends Controller
         return view('compras.edit')->with('compra', $compra);
     }
 
-    public function update(Compras $compra, Request $request)
+    public function update(Compras $compra, SeriesFormRequest $request)
     {
 
         $compra->fill($request->all());
