@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mercados', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('compra_id')->constrained();
+            // $table->foreignId('compra_id')->constrained();
             $table->string('nome_mercado', 128);
             $table->timestamps();
         });

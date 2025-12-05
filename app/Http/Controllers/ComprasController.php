@@ -63,4 +63,10 @@ class ComprasController extends Controller
 
         return to_route('compras.index')->with('mensagem.sucesso', "Item {$compra->nome} Atualizado");
     }
+
+        public function mercado(Request $request){
+
+        return view('compras.mercado');
+
+    }
 }
