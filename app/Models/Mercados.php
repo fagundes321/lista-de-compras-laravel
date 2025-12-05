@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mercado extends Model
+class Mercados extends Model
 {
+
+    protected $fillable = ['nome_mercado'];
 
      public function compras(){
 
@@ -14,11 +16,11 @@ class Mercado extends Model
     }
 
 
-     public function preco(){
+    //  public function preco(){
 
-        return $this->hasMany(Preco::class);
+    //     return $this->hasMany(Preco::class);
 
-    }
+    // }
 
 
 }

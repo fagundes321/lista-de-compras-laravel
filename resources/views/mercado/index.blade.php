@@ -10,11 +10,11 @@
 
     <ul class="list-group ">
         @foreach ($mercados as $mercado)
-            <li class="list-group-item d-flex bd-highlight" name="{{ $mercado->nome }}">
+            <li class="list-group-item d-flex bd-highlight" name="{{ $mercado->nome_mercado }}">
                 <div class="flex-grow-1 bd-highlight mt-1 ">
-                    {{ $mercado->nome }}
+                    {{ $mercado->nome_mercado}}
                 </div>
-                {{-- <form action="{{ route('mercados.edit') }}" method="GET" class="bd-highlight ">
+                <form action="{{ route('mercado.edit') }}" method="GET" class="bd-highlight ">
                     @csrf
                     <button type="submit" class="btn btn-success mb-2 ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -25,8 +25,8 @@
                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                         </svg>
                     </button>
-                </form> --}}
-                <a href="{{route('mercados.edit', $mercado->id)}}" class="btn btn-success mb-2 ">
+                </form>
+                {{-- <a href="{{route('mercados.edit', $mercado->id)}}" class="btn btn-success mb-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path
@@ -34,8 +34,8 @@
                             <path fill-rule="evenodd"
                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                         </svg>
-                </a>
-                <form action="{{ route('mercados.destroy', $mercado->id) }}" method="POST" class="bd-highlight ms-2">
+                </a> --}}
+                {{-- <form action="{{ route('mercados.destroy', $mercado->id) }}" method="POST" class="bd-highlight ms-2">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class=" btn btn-danger mb-2">
@@ -47,7 +47,7 @@
                                 d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
                         </svg>
                     </button>
-                </form>
+                </form> --}}
             </li>
         @endforeach
     </ul>

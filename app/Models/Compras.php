@@ -13,7 +13,7 @@ class Compras extends Model
     public function mercados()
     {
 
-        return $this->hasMany(Mercado::class, "mercado_id");
+        return $this->hasMany(Mercados::class, "mercado_id");
     }
 
     protected static function booted()

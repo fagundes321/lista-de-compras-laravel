@@ -10,7 +10,7 @@ class Preco extends Model
 
      public function mercado(){
 
-        return $this->belongsTo(Mercado::class);
+        return $this->belongsTo(Mercados::class);
 
     }
 
