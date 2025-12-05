@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\SeriesFormRequest;
+use App\Http\Requests\ComprasFormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Compras;
@@ -14,7 +14,10 @@ class ComprasController extends Controller
     public function index(Request $request)
     {
 
+        // Por ordem de criado
         $compras = Compras::all();
+        // por ordem Alfabetica
+        // $compras = Compras::query()->orderby('nome')->get();
         $mensagemSucesso = session('mensagem.sucesso');
         $mensagemErro = session('mensagem.erro');
 
@@ -31,12 +34,11 @@ class ComprasController extends Controller
     }
 
 
-    public function store(SeriesFormRequest $request)
+    public function store(ComprasFormRequest $request)
     {
 
-            $compra = Compras::create($request->all());
-            return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
-
+        $compra = Compras::create($request->all());
+        return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
     }
 
 
@@ -50,11 +52,10 @@ class ComprasController extends Controller
 
     public function edit(Compras $compra, Request $request)
     {
-
         return view('compras.edit')->with('compra', $compra);
     }
 
-    public function update(Compras $compra, SeriesFormRequest $request)
+    public function update(Compras $compra, ComprasFormRequest $request)
     {
 
         $compra->fill($request->all());

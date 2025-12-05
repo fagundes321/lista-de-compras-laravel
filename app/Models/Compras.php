@@ -3,8 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Compras extends Model
 {
     protected $fillable = ['nome'];
+    // protected $with = ['mercado'];
+
+    public function mercados()
+    {
+
+        return $this->hasMany(Mercado::class, "mercado_id");
+    }
+
+    protected static function booted()
+    {
+        self::addGlobalScope('ordered', function (Builder $queryBuilder) {
+            $queryBuilder->orderBy('nome', 'desc');
+        });
+    }
 }

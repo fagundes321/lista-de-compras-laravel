@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SeriesFormRequest extends FormRequest
+class ComprasFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,16 @@ class SeriesFormRequest extends FormRequest
         return [
 
             'nome' => ['required', 'min:3']
-      
+
+        ];
+    }
+
+
+    public function messages()
+    {
+        return[
+            'nome.required' => 'O campo nome é obrigatorio',
+            'nome.min' => 'É obrigatorio ter pelomenos :min caracteres'
         ];
     }
 }
