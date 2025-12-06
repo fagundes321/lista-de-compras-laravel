@@ -10,10 +10,12 @@ class MercadosController extends Controller{
 
 
      public function index(Request $request){
-        $mercados = Mercados::all();
+        $mercado = Mercados::all();
         $mensagemSucesso = session('mensagem.sucesso');
 
-        return view('mercado.index')->with('mercados', $mercados);
+        return view('mercado.index')
+        ->with('mercados', $mercado)
+        ->with('mensagemSucesso', $mensagemSucesso);
 
     }
 
@@ -27,20 +29,35 @@ class MercadosController extends Controller{
 
      public function store(Request $request){
 
-        $mercados = Mercados::create($request->all());
-        // dd($mercados);
-        return to_route('mercado.index')->with('mensagem.sucesso', "O mercado {$mercados->nome_mercado} foi adicionado");
+        //  dd($mercado);
+        $mercado = Mercados::create($request->all());
+        return to_route('mercado.index')->with('mensagem.sucesso', "O mercado {$mercado->nome_mercado} foi adicionado");
 
     }
 
 
-     public function edit(Mercados $mercados, Request $request){
-
-        return view('mercado.edit')->with('mercados', $mercados);
+     public function edit(Mercados $mercado, Request $request){
+        // dd($mercado);
+        return view('mercado.edit_mercado')->with('mercado', $mercado);
 
     }
 
 
+     public function update(Mercados $mercado,  Request $request){
+
+        $mercado->fill($request->all());
+        $mercado->save();
+        return to_route('mercado.index')->with('mensagemSucesso', "O mercado {$mercado->nome_mercado} foi atualizado");
+
+    }
+
+
+     public function destroy(Mercados $mercado, Request $request){
+
+        $mercado->delete();
+        return to_route('mercado.index')->with('mensagem.sucesso', "O mercado {$mercado->nome_mercado} foi excluido");
+
+    }
 
 
 

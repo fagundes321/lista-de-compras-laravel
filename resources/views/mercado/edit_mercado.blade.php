@@ -1,3 +1,3 @@
-<x-layout title="Editar Item: {{ $mercados->nome }}">
-    <x-mercados.form :action="route('compras.update', $mercados->id)" :nome="$mercados->nome_mercado" :update="true"/>
+<x-layout title="Editar Item: {{ $mercado->nome_mercado }}">
+    <x-mercados.form :action="route('mercado.update', $mercado->id)" :nome="$mercado->nome_mercado" :update="true"/>
 </x-layout>
