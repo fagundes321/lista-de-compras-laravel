@@ -7,7 +7,7 @@ use App\Http\Requests\ComprasFormRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Compras;
-
+use App\Models\Mercados;
 class ComprasController extends Controller
 {
 
@@ -16,6 +16,7 @@ class ComprasController extends Controller
 
         // Por ordem de criado
         $compras = Compras::all();
+        $mercado = Mercados::all();
         // por ordem Alfabetica
         // $compras = Compras::query()->orderby('nome')->get();
         $mensagemSucesso = session('mensagem.sucesso');
@@ -23,14 +24,15 @@ class ComprasController extends Controller
 
         return view('compras.index')
             ->with('compras', $compras)
+            ->with('mercados', $mercado)
             ->with('mensagemSucesso', $mensagemSucesso);
     }
 
 
     public function create()
     {
-
-        return view("compras.create");
+        $mercados = Mercados::all();
+        return view("compras.create")->with('mercados', $mercados);
     }
 
 
@@ -50,10 +52,14 @@ class ComprasController extends Controller
     }
 
 
-    public function edit(Compras $compra, Request $request)
-    {
-        return view('compras.edit')->with('compra', $compra);
-    }
+   public function edit(Compras $compra)
+{
+    $mercados = Mercados::all();
+    return view('compras.edit')
+        ->with('compra', $compra)
+        ->with('mercados', $mercados);
+}
+
 
     public function update(Compras $compra, ComprasFormRequest $request)
     {
