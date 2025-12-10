@@ -17,13 +17,13 @@
                 value="{{$nome}}"
             @endisset
             >
-            <select class="form-select" aria-label="Default select example">
+            {{-- <select class="form-select" aria-label="Default select example">
         <option selected>Selecione o mercado</option>
         @foreach ($mercados as $mercado)
             <option value="2">{{$mercado->nome_mercado}}</option>
         @endforeach
 
-        </select>
+        </select> --}}
         </div>
         <button type="submit" class="btn btn-primary">Adicionar</button>
         <a href="{{ route('compras.index') }}" class="btn btn-dark ">Voltar</a>
