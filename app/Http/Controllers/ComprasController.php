@@ -31,6 +31,7 @@ class ComprasController extends Controller
 
     public function create()
     {
+
         $mercados = Mercados::all();
         return view("compras.create")->with('mercados', $mercados);
     }
@@ -38,7 +39,7 @@ class ComprasController extends Controller
 
     public function store(ComprasFormRequest $request)
     {
-
+        
         $compra = Compras::create($request->all());
         return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
     }

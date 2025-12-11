@@ -1,26 +1,29 @@
 <x-layout title="Nova Compra">
 
-    <form action="{{ route('compras.store') }}" method="POST">
+    <form action="{{ route('compras.store') }}" method="POST" class="p-3 border rounded shadow-sm bg-light">
         @csrf
 
-        <div class="row mb-3">
+        <div class="row g-3">
 
-            <div class="col-8">
-                <label for="nome" class="form-label">Nome:</label>
+            {{-- Nome --}}
+            <div class="col-md-6">
+                <label for="nome" class="form-label fw-semibold">Nome do Produto:</label>
                 <input
                     class="form-control"
                     type="text"
-                    autofocus
                     id="nome"
                     name="nome"
+                    placeholder="Ex.: Arroz, Feijão..."
                     value="{{ old('nome') }}"
+                    autofocus
                 >
             </div>
 
-            <div class="col-2">
-                <label class="form-label">Mercado:</label>
-                <select class="form-select" name="mercado1_id">
-                    <option selected>Selecione o mercado</option>
+            {{-- Mercado --}}
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Mercado:</label>
+                <select class="form-select" name="mercado_id">
+                    <option selected disabled>Selecione o mercado</option>
                     @foreach ($mercados as $mercado)
                         <option value="{{ $mercado->id }}">
                             {{ $mercado->nome_mercado }}
@@ -29,22 +32,38 @@
                 </select>
             </div>
 
-            <div class="col-2">
-                <label class="form-label">Cidade:</label>
+            {{-- Cidade --}}
+            {{-- <div class="col-md-3">
+                <label class="form-label fw-semibold">Cidade:</label>
                 <select class="form-select" name="mercado2_id">
-                    <option selected>Selecione a cidade</option>
+                    <option selected disabled>Selecione a cidade</option>
                     @foreach ($mercados as $mercado)
                         <option value="{{ $mercado->id }}">
                             {{ $mercado->nome_mercado }}
                         </option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
 
+            {{-- Preço --}}
+            <div class="col-md-4">
+                <label for="preco" class="form-label fw-semibold">Preço:</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="preco"
+                    name="preco"
+                    placeholder="Ex.: 12.50"
+                    value="{{ old('preco') }}"
+                >
+            </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Adicionar</button>
-        <a href="{{ route('compras.index') }}" class="btn btn-dark">Voltar</a>
+        <div class="mt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-primary px-4">Adicionar</button>
+            <a href="{{ route('compras.index') }}" class="btn btn-secondary px-4">Voltar</a>
+        </div>
+
     </form>
 
 </x-layout>

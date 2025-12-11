@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('mercado_id')->constrained();
+            $table->foreignId('mercado_id')->constrained();
             $table->string('nome', 128);
+            $table->string('preco', 128);
             $table->timestamps();
         });
     }
