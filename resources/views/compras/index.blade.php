@@ -29,6 +29,7 @@
                         <th scope="col" style="width: 60px;">#</th>
                         <th scope="col">Item</th>
                         <th scope="col">Mercado</th>
+                        <th scope="col">Cidade</th>
                         <th scope="col">Preço</th>
                         <th scope="col" class="text-center" style="width: 150px;">Ações</th>
                     </tr>
@@ -45,12 +46,24 @@
 
                             <td class="text-muted">
                                 @foreach ($mercados as $mercado)
-                                    {{ $mercado->nome_mercado }}
+                                    @if ($compra->mercado_id == $mercado->id)
+                                        {{$mercado->nome_mercado}}
+                                    @endif
                                 @endforeach
                             </td>
 
                             <td class="text-muted">
-                                Preço da opção
+                                teste
+                            </td>
+
+                            <td class="text-muted">
+                                @if ($compra->preco == '')
+                                    N/A
+                                @else
+
+                                R$ {{ number_format($compra->preco, 2, ',', '.') }}
+                                @endif
+
                             </td>
 
                             <td>

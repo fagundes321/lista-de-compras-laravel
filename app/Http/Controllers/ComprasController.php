@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Compras;
 use App\Models\Mercados;
+
 class ComprasController extends Controller
 {
 
@@ -15,10 +16,10 @@ class ComprasController extends Controller
     {
 
         // Por ordem de criado
-        $compras = Compras::all();
+        // $compras = Compras::all();
         $mercado = Mercados::all();
         // por ordem Alfabetica
-        // $compras = Compras::query()->orderby('nome')->get();
+        $compras = Compras::query()->orderby('mercado_id')->get();
         $mensagemSucesso = session('mensagem.sucesso');
         $mensagemErro = session('mensagem.erro');
 
@@ -39,7 +40,10 @@ class ComprasController extends Controller
 
     public function store(ComprasFormRequest $request)
     {
-        
+        $request->merge([
+            'preco' => str_replace(',', '.', $request->preco)
+        ]);
+
         $compra = Compras::create($request->all());
         return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
     }
@@ -53,13 +57,13 @@ class ComprasController extends Controller
     }
 
 
-   public function edit(Compras $compra)
-{
-    $mercados = Mercados::all();
-    return view('compras.edit')
-        ->with('compra', $compra)
-        ->with('mercados', $mercados);
-}
+    public function edit(Compras $compra)
+    {
+        $mercados = Mercados::all();
+        return view('compras.edit')
+            ->with('compra', $compra)
+            ->with('mercados', $mercados);
+    }
 
 
     public function update(Compras $compra, ComprasFormRequest $request)
@@ -71,9 +75,9 @@ class ComprasController extends Controller
         return to_route('compras.index')->with('mensagem.sucesso', "Item {$compra->nome} Atualizado");
     }
 
-        public function mercado(Request $request){
+    public function mercado(Request $request)
+    {
 
         return view('compras.mercado');
-
     }
 }

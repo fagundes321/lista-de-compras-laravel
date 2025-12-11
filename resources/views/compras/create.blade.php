@@ -8,15 +8,8 @@
             {{-- Nome --}}
             <div class="col-md-6">
                 <label for="nome" class="form-label fw-semibold">Nome do Produto:</label>
-                <input
-                    class="form-control"
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    placeholder="Ex.: Arroz, Feijão..."
-                    value="{{ old('nome') }}"
-                    autofocus
-                >
+                <input class="form-control" type="text" id="nome" name="nome"
+                    placeholder="Ex.: Arroz, Feijão..." value="{{ old('nome') }}" autofocus>
             </div>
 
             {{-- Mercado --}}
@@ -48,15 +41,20 @@
             {{-- Preço --}}
             <div class="col-md-4">
                 <label for="preco" class="form-label fw-semibold">Preço:</label>
-                <input
-                    class="form-control"
-                    type="text"
-                    id="preco"
-                    name="preco"
-                    placeholder="Ex.: 12.50"
-                    value="{{ old('preco') }}"
-                >
+                <input class="form-control" type="text" id="preco" name="preco" placeholder="Ex.: 12,50"
+                    value="{{ old('preco') }}" oninput="formatarMoeda(this)">
             </div>
+
+            <script>
+                function formatarMoeda(input) {
+                    let value = input.value.replace(/\D/g, "");
+
+                    value = (value / 100).toFixed(2) + "";
+                    value = value.replace(".", ",");
+                    input.value = value;
+                }
+            </script>
+
         </div>
 
         <div class="mt-4 d-flex gap-2">

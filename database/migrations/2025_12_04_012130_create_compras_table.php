@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mercado_id')->constrained();
             $table->string('nome', 128);
-            $table->string('preco', 128);
+            $table->decimal('preco', 10, 2); // Armazena R$ 10,50 como 10.50
+
             $table->timestamps();
         });
     }
