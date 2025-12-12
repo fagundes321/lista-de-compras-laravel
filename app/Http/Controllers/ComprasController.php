@@ -44,6 +44,12 @@ class ComprasController extends Controller
             'preco' => str_replace(',', '.', $request->preco)
         ]);
 
+        if(empty($request->mercado_id)){
+            $request->merge([
+                'mercado_id' => 1
+            ]);
+        }
+
         $compra = Compras::create($request->all());
         return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
     }
