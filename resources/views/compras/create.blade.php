@@ -15,7 +15,7 @@
             {{-- Mercado --}}
             <div class="col-md-3">
                 <label class="form-label fw-semibold">Mercado:</label>
-                <select class="form-select" name="mercado_id">
+                <select class="form-select" name="mercado_id" >
                     <option selected disabled>Selecione o mercado</option>
                     @foreach ($mercados as $mercado)
                         <option value="{{ $mercado->id }}">

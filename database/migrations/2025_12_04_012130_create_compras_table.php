@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mercado_id')->constrained();
+            $table->foreignId('mercado_id')->nullable();
             $table->string('nome', 128);
-            $table->decimal('preco', 10, 2); // Armazena R$ 10,50 como 10.50
+            $table->decimal('preco', 10, 2)->nullable();; // Armazena R$ 10,50 como 10.50
 
             $table->timestamps();
         });

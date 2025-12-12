@@ -11,7 +11,7 @@ class Mercados extends Model
 
      public function compras(){
 
-        return $this->belongsTo(Compras::class);
+        // return $this->belongsTo(Compras::class);
 
     }
 

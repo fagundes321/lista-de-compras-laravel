@@ -23,8 +23,8 @@ class ComprasFormRequest extends FormRequest
     {
         return [
 
-            'nome' => ['required', 'min:3']
-
+            'nome' => ['required', 'min:3'],
+            // 'mercado_id' => ['required']
         ];
     }
 
@@ -32,8 +32,9 @@ class ComprasFormRequest extends FormRequest
     public function messages()
     {
         return[
-            'nome.required' => 'O campo nome é obrigatorio',
-            'nome.min' => 'É obrigatorio ter pelomenos :min caracteres'
+            'nome.required' => 'Todo Produto deve ter nome',
+            'nome.min' => 'É obrigatorio ter pelomenos :min caracteres',
+            // 'mercado_id.required' => 'Caso não haja mercado selecione S/M'
         ];
     }
 }

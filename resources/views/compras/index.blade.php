@@ -20,8 +20,8 @@
         </div>
     @endisset
 
-    <div class="card shadow-sm border-0">
-        <div class="card-body p-0">
+    <div class="card shadow-sm border-0 ">
+        <div class="card-body p-0 text-center">
 
             <table class="table table-hover align-middle mb-0">
                 <thead class="bg-dark text-white">
@@ -35,7 +35,7 @@
                     </tr>
                 </thead>
 
-                <tbody class="table-group-divider">
+                <tbody class="table-group-divider ">
                     @foreach ($compras as $index => $compra)
                         <tr>
                             <th scope="row" class="text-muted">{{ $index + 1 }}</th>
@@ -43,14 +43,14 @@
                             <td class="fw-semibold">
                                 {{ $compra->nome }}
                             </td>
-
-                            <td class="text-muted">
-                                @foreach ($mercados as $mercado)
-                                    @if ($compra->mercado_id == $mercado->id)
-                                        {{$mercado->nome_mercado}}
-                                    @endif
-                                @endforeach
+                            <td class="text-muted ">
+                                @if (empty($compra->mercado_id))
+                                    -
+                                @else
+                                    {{ $mercados->firstWhere('id', $compra->mercado_id)->nome_mercado ?? '-' }}
+                                @endif
                             </td>
+
 
                             <td class="text-muted">
                                 teste
@@ -58,10 +58,9 @@
 
                             <td class="text-muted">
                                 @if ($compra->preco == '')
-                                    N/A
+                                    -
                                 @else
-
-                                R$ {{ number_format($compra->preco, 2, ',', '.') }}
+                                    R$ {{ number_format($compra->preco, 2, ',', '.') }}
                                 @endif
 
                             </td>
