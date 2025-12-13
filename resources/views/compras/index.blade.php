@@ -60,6 +60,7 @@
                                 @if ($compra->preco == '')
                                     -
                                 @else
+                                {{-- @dd($compra->preco) --}}
                                     R$ {{ number_format($compra->preco, 2, ',', '.') }}
                                 @endif
 

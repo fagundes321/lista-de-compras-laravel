@@ -12,7 +12,7 @@
                 {{-- Nome --}}
                 <div class="col-md-6">
                     <label for="name" class="form-label fw-semibold">Nome do Produto:</label>
-                    <input class="form-control" type="text" id="nome"
+                    <input required class="form-control" type="text" id="nome"
                         name="nome" placeholder="Ex.: Arroz, Feijão..."
                         value="{{ old('nome', $compra->nome) }}" autofocus>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-4">
                     <label for="preco" class="form-label fw-semibold">Preço:</label>
                     <input class="form-control" type="text" id="preco" name="preco" placeholder="Ex.: 12,50"
-                        value="{{ old('preco') }}" oninput="formatarMoeda(this)">
+                        value="{{ old('preco', $compra->preco) }}" oninput="formatarMoeda(this)">
                 </div>
 
                 <script>

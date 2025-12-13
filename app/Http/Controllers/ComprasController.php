@@ -43,7 +43,6 @@ class ComprasController extends Controller
         $request->merge([
             'preco' => str_replace(',', '.', $request->preco)
         ]);
-
         // if(empty($request->mercado_id)){
         //     $request->merge([
         //         'mercado_id' => ''
@@ -66,8 +65,6 @@ class ComprasController extends Controller
     public function edit(Compras $compra)
     {
 
-        
-
         $mercados = Mercados::all();
         return view('compras.edit')
             ->with('compra', $compra)
@@ -77,6 +74,9 @@ class ComprasController extends Controller
 
     public function update(Compras $compra, ComprasFormRequest $request)
     {
+            $request->merge([
+            'preco' => str_replace(',', '.', $request->preco)
+        ]);
 
         $compra->fill($request->all());
         $compra->save();

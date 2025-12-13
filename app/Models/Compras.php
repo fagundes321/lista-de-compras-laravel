@@ -16,6 +16,8 @@ class Compras extends Model
         // return $this->hasMany(Mercados::class, "mercado_id");
     }
 
+
+
     protected static function booted()
     {
         self::addGlobalScope('ordered', function (Builder $queryBuilder) {

@@ -8,7 +8,7 @@
             {{-- Nome --}}
             <div class="col-md-6">
                 <label for="nome" class="form-label fw-semibold">Nome do Produto:</label>
-                <input class="form-control" type="text" id="nome" name="nome"
+                <input required  title="O nome do produto é obrigatório" class="form-control" type="text" id="nome" name="nome"
                     placeholder="Ex.: Arroz, Feijão..." value="{{ old('nome') }}" autofocus>
             </div>
 
@@ -53,6 +53,7 @@
                     value = value.replace(".", ",");
                     input.value = value;
                 }
+
             </script>
 
         </div>
