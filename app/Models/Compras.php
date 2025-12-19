@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Compras extends Model
 {
-    protected $fillable = ['nome', 'preco', 'mercado_id'];
+    protected $fillable = ['nome', 'preco', 'mercado_id', 'cidade_id'];
     // protected $with = ['mercado'];
 
     public function mercados()

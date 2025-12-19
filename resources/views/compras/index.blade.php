@@ -11,6 +11,9 @@
             <a href="{{ route('mercado.index') }}" class="btn btn-outline-secondary">
                 Mercados
             </a>
+                <a href="{{ route('cidades.index') }}" class="btn btn-outline-secondary">
+                Cidades
+            </a>
         </div>
     </div>
 
@@ -21,24 +24,24 @@
     @endisset
 
     <div class="card shadow-sm border-0 ">
-        <div class="card-body p-0 text-center">
+        <div class="card-body p-0 ">
 
             <table class="table table-hover align-middle mb-0">
-                <thead class="bg-dark text-white">
+                <thead class="table-dark">
                     <tr>
                         <th scope="col" style="width: 60px;">#</th>
                         <th scope="col">Item</th>
                         <th scope="col">Mercado</th>
                         <th scope="col">Cidade</th>
                         <th scope="col">Preço</th>
-                        <th scope="col" class="text-center" style="width: 150px;">Ações</th>
+                        <th scope="col" class="text-center" style="width: 160px;">Ações</th>
                     </tr>
                 </thead>
 
                 <tbody class="table-group-divider ">
-                    @foreach ($compras as $index => $compra)
+                    @forelse ($compras as $compra)
                         <tr>
-                            <th scope="row" class="text-muted">{{ $index + 1 }}</th>
+                            <th class="text-center">{{ $loop->iteration }}</th>
 
                             <td class="fw-semibold">
                                 {{ $compra->nome }}
@@ -91,7 +94,14 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-4">
+                                Nenhum item cadastrado.
+                            </td>
+                        </tr>
+
+                    @endforelse
                 </tbody>
 
             </table>
