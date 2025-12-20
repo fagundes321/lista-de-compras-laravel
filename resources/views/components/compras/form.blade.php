@@ -9,6 +9,8 @@
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
             <input
+            required
+            autofocus
             class="form-control"
             type="text"
             id="nome"

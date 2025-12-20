@@ -8,24 +8,26 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Compras;
 use App\Models\Mercados;
-
+use App\Models\Cidades;
 class ComprasController extends Controller
 {
 
     public function index(Request $request)
     {
 
-        // Por ordem de criado
-        // $compras = Compras::all();
-        $mercado = Mercados::all();
         // por ordem Alfabetica
         $compras = Compras::query()->orderby('mercado_id')->get();
+        // Por ordem de criado
+        // $compras = Compras::all();
+        $mercados = Mercados::all();
+        $cidades = Cidades::all();
         $mensagemSucesso = session('mensagem.sucesso');
         $mensagemErro = session('mensagem.erro');
 
         return view('compras.index')
             ->with('compras', $compras)
-            ->with('mercados', $mercado)
+            ->with('mercados', $mercados)
+            ->with('cidades', $cidades)
             ->with('mensagemSucesso', $mensagemSucesso);
     }
 
@@ -34,7 +36,8 @@ class ComprasController extends Controller
     {
 
         $mercados = Mercados::all();
-        return view("compras.create")->with('mercados', $mercados);
+        $cidades = Cidades::all();
+        return view("compras.create")->with('mercados', $mercados)->with('cidades', $cidades);
     }
 
 
@@ -66,9 +69,11 @@ class ComprasController extends Controller
     {
 
         $mercados = Mercados::all();
+        $cidades =  Cidades::all();
         return view('compras.edit')
             ->with('compra', $compra)
-            ->with('mercados', $mercados);
+            ->with('mercados', $mercados)
+            ->with('cidades', $cidades);
     }
 
 
