@@ -36,5 +36,30 @@ class CidadesController extends Controller
 
     }
 
-    
+    // Metodo responsavel por retornar a view da Editar a Cidade
+     public function edit(Cidades $cidade, Request $request){
+
+        return view('cidades.edit_cidade')->with('cidade', $cidade);
+
+    }
+
+
+     public function update(Cidades $cidade, Request $request){
+
+        $cidade->fill($request->all());
+        $cidade->save();
+        return to_route('cidades.index');
+
+    }
+
+
+     public function destroy(Cidades $cidade, Request $request){
+
+        $cidade->delete();
+        return to_route('cidades.index');
+
+    }
+
+
+
 }

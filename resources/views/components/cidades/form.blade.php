@@ -9,6 +9,7 @@
         <div class="mb-3">
             <label for="nome_cidade" class="form-label">Nome:</label>
             <input
+            required
             class="form-control"
             type="text"
             id="nome_cidade"
