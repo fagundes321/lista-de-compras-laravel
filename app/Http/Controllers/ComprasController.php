@@ -16,7 +16,10 @@ class ComprasController extends Controller
     {
 
         // por ordem Alfabetica
-        $compras = Compras::query()->orderby('mercado_id')->get();
+        $compras = Compras::orderBy('cidade_id')
+       ->orderBy('mercado_id')
+       ->get();
+
         // Por ordem de criado
         // $compras = Compras::all();
         $mercados = Mercados::all();
@@ -24,10 +27,13 @@ class ComprasController extends Controller
         $mensagemSucesso = session('mensagem.sucesso');
         $mensagemErro = session('mensagem.erro');
 
+        $totalCompras = Compras::somaTotal();
+
         return view('compras.index')
             ->with('compras', $compras)
             ->with('mercados', $mercados)
             ->with('cidades', $cidades)
+            ->with('totalCompras', $totalCompras)
             ->with('mensagemSucesso', $mensagemSucesso);
     }
 
@@ -94,4 +100,7 @@ class ComprasController extends Controller
 
         return view('compras.mercado');
     }
+
+
+
 }

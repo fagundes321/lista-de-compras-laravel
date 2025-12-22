@@ -34,21 +34,24 @@
         <div class="card shadow-sm border border-dark">
             <div class="card-body p-0">
 
-                <table class="table table-hover align-middle mb-0">
+                <table class="table table-hover align-middle mb-0 text-center">
 
                     {{-- Cabeçalho --}}
                     <thead class="table-dark">
                         <tr>
                             <th class="text-center" style="width: 60px;">#</th>
-                            <th>Item</th>
+                            <th class="">Item</th>
+                            <th>Marca</th>
                             <th>Mercado</th>
                             <th>Cidade</th>
-                            <th>Preço</th>
+                            <th>Qtd/Kg</th>
+                            {{-- <th>Preço unitario</th> --}}
+                            <th>Preço total</th>
                             <th class="text-center" style="width: 160px;">Ações</th>
                         </tr>
                     </thead>
 
-                    <tbody class="table-group-divider">
+                    <tbody class="table-group-divider ">
 
                         @forelse ($compras as $compra)
                             <tr>
@@ -59,7 +62,9 @@
                                 <td class="fw-semibold text-dark">
                                     {{ $compra->nome }}
                                 </td>
-
+                                <td class="text-muted ">
+                                    -
+                                </td>
                                 <td class="text-muted">
                                     {{ $mercados->firstWhere('id', $compra->mercado_id)->nome_mercado ?? '-' }}
                                 </td>
@@ -68,12 +73,31 @@
                                     {{ $cidades->firstWhere('id', $compra->cidade_id)->nome_cidade ?? '-' }}
                                 </td>
 
-                                <td class="text-muted">
+                                <td class="fw-semibold text-muted">
+                                    qtd
+                                </td>
+{{--
+                                <td class="text-muted small">
                                     @if ($compra->preco !== null && $compra->preco !== '')
                                         R$ {{ number_format($compra->preco, 2, ',', '.') }}
                                     @else
                                         -
                                     @endif
+                                </td> --}}
+
+                                <td class="fw-bold text-success">
+                                       @if ($compra->preco !== null && $compra->preco !== '')
+                                        R$ {{ number_format($compra->preco, 2, ',', '.') }}
+                                    @else
+                                        -
+                                    @endif
+                                    <div class="text-muted small">
+                                           @if ($compra->preco !== null && $compra->preco !== '')
+                                       x * R$ {{ number_format($compra->preco, 2, ',', '.') }}
+                                    @else
+                                        -
+                                    @endif
+                                    </div>
                                 </td>
 
                                 {{-- Ações --}}
@@ -130,6 +154,46 @@
                 </table>
 
             </div>
+
+        </div>
+        {{-- Resumo / Soma --}}
+        <div class="row mt-4 mb-4">
+
+            {{-- Total de Itens --}}
+            <div class="col-md-4 mb-2">
+                <div class="card border border-dark shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <span class="text-muted fw-semibold text-uppercase small">
+                            Total de Itens
+                        </span>
+
+                        <h3 class="fw-bold mt-2 mb-0">
+                            {{ $compras->count() ?? 0 }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Soma Total --}}
+            <div class="col-md-8 mb-2">
+                <div class="card border border-dark shadow-sm h-100 bg-dark text-white">
+                    <div class="card-body d-flex flex-column justify-content-center text-center">
+                        <span class="text-uppercase fw-semibold small">
+                            Valor Total das Compras
+                        </span>
+
+                        <h2 class="fw-bold mt-2 mb-0">
+                            R$ {{ number_format($totalCompras, 2, ',', '.') }}
+                        </h2>
+
+
+                        <small class="opacity-75 mt-1">
+                            Soma de todos os itens cadastrados
+                        </small>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>

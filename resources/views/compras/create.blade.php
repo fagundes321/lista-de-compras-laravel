@@ -1,4 +1,4 @@
-<x-layout title="Nova Compra">
+<x-layout title="">
 
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -24,6 +24,7 @@
                                     </label>
                                     <input
                                         required
+                                        autofocus
                                         class="form-control border-dark"
                                         type="text"
                                         id="nome"
@@ -60,7 +61,7 @@
                                     <label class="form-label fw-semibold text-dark">
                                         Mercado
                                     </label>
-                                    <select class="form-select border-dark" name="mercado_id" required>
+                                    <select class="form-select border-dark" name="mercado_id" >
                                         <option value="" disabled selected>
                                             Selecione
                                         </option>
@@ -77,7 +78,7 @@
                                     <label class="form-label fw-semibold text-dark">
                                         Cidade
                                     </label>
-                                    <select class="form-select border-dark" name="cidade_id" required>
+                                    <select class="form-select border-dark" name="cidade_id" >
                                         <option value="" disabled selected>
                                             Selecione
                                         </option>
