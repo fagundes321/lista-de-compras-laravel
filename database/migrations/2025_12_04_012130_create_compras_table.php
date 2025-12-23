@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 128);
             $table->string('marca', 128)->nullable();
-            $table->deciam('qtd', 10, 2)->nullable();
+            $table->decimal('quantidade', 10, 2)->nullable();
+            $table->string('unidade', 3)->nullable();
             $table->foreignId('mercado_id')->nullable();
             $table->foreignId('cidade_id')->nullable();
             $table->decimal('preco', 10, 2)->nullable(); // Armazena R$ 10,50 como 10.50

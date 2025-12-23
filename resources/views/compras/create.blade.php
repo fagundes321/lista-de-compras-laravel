@@ -83,7 +83,7 @@
                                             required
                                             type="number"
                                             step="0.01"
-                                            min="0"
+                                            min="0.000"
                                             class="form-control border-dark"
                                             name="quantidade"
                                             placeholder="0"

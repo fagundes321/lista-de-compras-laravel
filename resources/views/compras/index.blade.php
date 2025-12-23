@@ -74,7 +74,7 @@
                                 </td>
 
                                 <td class="fw-semibold text-muted">
-                                    qtd
+                                    {{$compra->quantidade ?? '-'}} {{$compra->unidade}}
                                 </td>
 {{--
                                 <td class="text-muted small">
@@ -84,18 +84,18 @@
                                         -
                                     @endif
                                 </td> --}}
-
                                 <td class="fw-bold text-success">
-                                       @if ($compra->preco !== null && $compra->preco !== '')
-                                        R$ {{ number_format($compra->preco, 2, ',', '.') }}
+                                    @if ($compra->preco !== null && $compra->preco !== '')
+                                    {{-- {{$calculo = $compra->preco * $compra->quantidade}} --}}
+                                        R$ {{ number_format($compra->total, 2, ',', '.') }}
                                     @else
                                         -
                                     @endif
                                     <div class="text-muted small">
-                                           @if ($compra->preco !== null && $compra->preco !== '')
-                                       x * R$ {{ number_format($compra->preco, 2, ',', '.') }}
+                                           @if ($compra->quantidade > 1 && $compra->preco !== '')
+                                       {{$compra->quantidade}} {{$compra->unidade}} × R$ {{ number_format($compra->preco, 2, ',', '.') }}
                                     @else
-                                        -
+
                                     @endif
                                     </div>
                                 </td>

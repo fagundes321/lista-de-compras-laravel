@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ComprasFormRequest;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Compras;
 use App\Models\Mercados;
@@ -27,8 +28,9 @@ class ComprasController extends Controller
         $mensagemSucesso = session('mensagem.sucesso');
         $mensagemErro = session('mensagem.erro');
 
-        $totalCompras = Compras::somaTotal();
 
+
+        $totalCompras = Compras::totalCompras();
         return view('compras.index')
             ->with('compras', $compras)
             ->with('mercados', $mercados)
@@ -52,11 +54,7 @@ class ComprasController extends Controller
         $request->merge([
             'preco' => str_replace(',', '.', $request->preco)
         ]);
-        // if(empty($request->mercado_id)){
-        //     $request->merge([
-        //         'mercado_id' => ''
-        //     ]);
-        // }
+        $quantidade = $request->quantidade;
 
         $compra = Compras::create($request->all());
         return to_route('compras.index')->with('mensagem.sucesso', "O item {$compra->nome} foi adicionado");
