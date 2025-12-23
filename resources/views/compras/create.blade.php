@@ -18,7 +18,7 @@
                             <div class="row g-3">
 
                                 {{-- Nome --}}
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <label for="nome" class="form-label fw-semibold text-dark">
                                         Nome do Produto
                                     </label>
@@ -31,6 +31,22 @@
                                         name="nome"
                                         placeholder="Ex.: Arroz, Feijão..."
                                         value="{{ old('nome') }}"
+                                        autofocus
+                                    >
+                                </div>
+
+                                {{-- Marca --}}
+                                <div class="col-md-4">
+                                    <label for="marca" class="form-label fw-semibold text-dark">
+                                        Marca
+                                    </label>
+                                    <input
+                                        class="form-control border-dark"
+                                        type="text"
+                                        id="marca"
+                                        name="marca"
+                                        placeholder="Ex.: Sadia, Perdigão..."
+                                        value="{{ old('marca') }}"
                                         autofocus
                                     >
                                 </div>
@@ -55,6 +71,41 @@
                                         >
                                     </div>
                                 </div>
+
+                            {{-- Quantidade + Unidade --}}
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold text-dark">
+                                        Quantidade
+                                    </label>
+
+                                    <div class="input-group">
+                                        <input
+                                            required
+                                            type="number"
+                                            step="0.01"
+                                            min="0"
+                                            class="form-control border-dark"
+                                            name="quantidade"
+                                            placeholder="0"
+                                            value="{{ old('quantidade') }}"
+                                        >
+
+                                 <select class="form-select border-dark" name="unidade" required style="max-width: 160px;">
+                                         <option value="" disabled selected>
+                                            Selecione
+                                        </option>
+                                    <option value="un">unidade</option>
+                                    <option value="kg">Quilo</option>
+                                    <option value="g">Grama</option>
+                                    <option value="L">Litro</option>
+                                    <option value="ml">Mililitro</option>
+                                    <option value="pct">Pacote</option>
+                                    <option value="cx">Caixa</option>
+                                </select>
+
+                                    </div>
+                                </div>
+
 
                                 {{-- Mercado --}}
                                 <div class="col-md-3">

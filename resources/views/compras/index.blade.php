@@ -63,7 +63,7 @@
                                     {{ $compra->nome }}
                                 </td>
                                 <td class="text-muted ">
-                                    -
+                                    {{$compra->marca ?? '-'}}
                                 </td>
                                 <td class="text-muted">
                                     {{ $mercados->firstWhere('id', $compra->mercado_id)->nome_mercado ?? '-' }}
@@ -143,7 +143,7 @@
 
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center text-muted py-4">
+                                <td colspan="8" class="text-center text-muted py-4">
                                     Nenhum item cadastrado.
                                 </td>
                             </tr>
