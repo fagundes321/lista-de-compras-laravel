@@ -18,7 +18,7 @@
                             <div class="row g-3">
 
                                 {{-- Nome --}}
-                                <div class="col-md-5">
+                                <div class="col-12 col-md-5">
                                     <label for="nome" class="form-label fw-semibold text-dark">
                                         Nome do Produto
                                     </label>
@@ -31,12 +31,11 @@
                                         name="nome"
                                         placeholder="Ex.: Arroz, Feijão..."
                                         value="{{ old('nome') }}"
-                                        autofocus
                                     >
                                 </div>
 
                                 {{-- Marca --}}
-                                <div class="col-md-4">
+                                <div class="col-12 col-md-4">
                                     <label for="marca" class="form-label fw-semibold text-dark">
                                         Marca
                                     </label>
@@ -47,12 +46,11 @@
                                         name="marca"
                                         placeholder="Ex.: Sadia, Perdigão..."
                                         value="{{ old('marca') }}"
-                                        autofocus
                                     >
                                 </div>
 
                                 {{-- Preço --}}
-                                <div class="col-md-3">
+                                <div class="col-12 col-md-3">
                                     <label for="preco" class="form-label fw-semibold text-dark">
                                         Preço
                                     </label>
@@ -63,6 +61,8 @@
                                         <input
                                             class="form-control border-dark"
                                             type="text"
+                                            inputmode="decimal"
+                                            pattern="[0-9]*"
                                             id="preco"
                                             name="preco"
                                             placeholder="0,00"
@@ -72,47 +72,47 @@
                                     </div>
                                 </div>
 
-                            {{-- Quantidade + Unidade --}}
-                                <div class="col-md-4">
+                                {{-- Quantidade + Unidade --}}
+                                <div class="col-12 col-md-4">
                                     <label class="form-label fw-semibold text-dark">
                                         Quantidade
                                     </label>
 
-                                    <div class="input-group">
-                                        <input
-                                            required
-                                            type="number"
-                                            step="0.01"
-                                            min="0.000"
-                                            class="form-control border-dark"
-                                            name="quantidade"
-                                            placeholder="0"
-                                            value="{{ old('quantidade') }}"
-                                        >
+                                    <div class="row g-2">
+                                        <div class="col-7">
+                                            <input
+                                                required
+                                                type="number"
+                                                step="0.01"
+                                                min="0"
+                                                class="form-control border-dark"
+                                                name="quantidade"
+                                                placeholder="Qtd"
+                                                value="{{ old('quantidade') }}"
+                                            >
+                                        </div>
 
-                                 <select class="form-select border-dark" name="unidade" required style="max-width: 160px;">
-                                         <option value="" disabled selected>
-                                            Selecione
-                                        </option>
-                                    <option value="un">unidade</option>
-                                    <option value="kg">Quilo</option>
-                                    <option value="g">Grama</option>
-                                    <option value="L">Litro</option>
-                                    <option value="ml">Mililitro</option>
-                                    <option value="pct">Pacote</option>
-                                    <option value="cx">Caixa</option>
-                                </select>
-
+                                        <div class="col-5">
+                                            <select class="form-select border-dark" name="unidade" required>
+                                                <option value="" disabled selected>Un.</option>
+                                                <option value="un">Unidade</option>
+                                                <option value="kg">Quilo</option>
+                                                <option value="g">Grama</option>
+                                                <option value="L">Litro</option>
+                                                <option value="ml">Mililitro</option>
+                                                <option value="pct">Pacote</option>
+                                                <option value="cx">Caixa</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
-
                                 {{-- Mercado --}}
-                                <div class="col-md-3">
+                                <div class="col-12 col-md-3">
                                     <label class="form-label fw-semibold text-dark">
                                         Mercado
                                     </label>
-                                    <select class="form-select border-dark" name="mercado_id" >
+                                    <select class="form-select border-dark" name="mercado_id">
                                         <option value="" disabled selected>
                                             Selecione
                                         </option>
@@ -125,11 +125,11 @@
                                 </div>
 
                                 {{-- Cidade --}}
-                                <div class="col-md-3">
+                                <div class="col-12 col-md-3">
                                     <label class="form-label fw-semibold text-dark">
                                         Cidade
                                     </label>
-                                    <select class="form-select border-dark" name="cidade_id" >
+                                    <select class="form-select border-dark" name="cidade_id">
                                         <option value="" disabled selected>
                                             Selecione
                                         </option>
@@ -145,14 +145,15 @@
 
                             <hr class="my-4 border-dark">
 
-                            <div class="d-flex justify-content-end gap-2">
+                            {{-- Botões --}}
+                            <div class="d-flex flex-column flex-md-row justify-content-end gap-2">
                                 <a href="{{ route('compras.index') }}"
-                                   class="btn btn-outline-dark px-4">
+                                   class="btn btn-outline-dark px-4 w-100 w-md-auto">
                                     Voltar
                                 </a>
 
                                 <button type="submit"
-                                        class="btn btn-dark px-4">
+                                        class="btn btn-dark px-4 w-100 w-md-auto">
                                     Salvar
                                 </button>
                             </div>

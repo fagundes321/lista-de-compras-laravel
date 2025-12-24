@@ -3,12 +3,12 @@
     <div class="container mt-4">
 
         {{-- Header --}}
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="fw-bold text-dark m-0">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
+            <h2 class="fw-bold text-dark m-0 text-center text-md-start">
                 Lista de Mercados
             </h2>
 
-            <div class="d-flex gap-2">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-end gap-2">
                 <a href="{{ route('mercado.create') }}" class="btn btn-dark">
                     + Adicionar Mercado
                 </a>
