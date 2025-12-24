@@ -49,10 +49,7 @@ class Compras extends Model
             $this->quantidade ?? 0,
             $this->unidade
         );
-
-        return (float) (
-            ($this->preco ?? 0) * $quantidade
-        );
+        return  ( ((float)$this->preco ?? 0) * ((float)$quantidade));
     }
 
 

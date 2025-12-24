@@ -86,7 +86,7 @@
                                             placeholder="1"
                                             value="{{ old('quantidade', $compra->quantidade) }}"
                                         >
-
+                                        
                                  <select class="form-select border-dark" name="unidade"  style="max-width: 160px;">
                                          <option value="" disabled selected>
                                             Selecione

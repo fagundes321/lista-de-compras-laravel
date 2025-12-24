@@ -62,7 +62,7 @@
                                             class="form-control border-dark"
                                             type="text"
                                             inputmode="decimal"
-                                            pattern="[0-9]*"
+
                                             id="preco"
                                             name="preco"
                                             placeholder="0,00"

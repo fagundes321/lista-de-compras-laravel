@@ -115,7 +115,7 @@
 
                                             <div class="small text-muted">
                                                 {{ $compra->quantidade }} {{ $compra->unidade }}
-                                                × R$ {{ number_format($compra->preco, 2, ',', '.') }}
+                                                × R$ {{ number_format((float)$compra->preco, 2, ',', '.') }}
                                             </div>
                                         </div>
                                         {{-- MOBILE --}}
@@ -127,7 +127,7 @@
 
                                             <div class="text-muted">
                                                 {{ $compra->quantidade }} {{ $compra->unidade }}
-                                                × {{ number_format($compra->preco, 2, ',', '.') }}
+                                                × {{ number_format((float)$compra->preco, 2, ',', '.') }}
                                             </div>
 
                                         </div>
