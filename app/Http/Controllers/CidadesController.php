@@ -15,7 +15,7 @@ class CidadesController extends Controller
         // os dados da Tebela/Model Cidades
         $cidades = Cidades::all();
 
-       return view('cidades.index')
+       return view('cidades.index_cidade')
        ->with('cidades', $cidades);
 
     }

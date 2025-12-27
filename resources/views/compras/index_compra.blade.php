@@ -158,7 +158,7 @@
 
                                             {{-- Excluir --}}
                                             <form action="{{ route('compras.destroy', $compra->id) }}" method="POST"
-                                                onsubmit="return confirm('Deseja excluir este item?')">
+                                               >
                                                 @csrf
                                                 @method('DELETE')
 
@@ -208,10 +208,10 @@
                         </h3>
                     </div>
                 </div>
-
+{{--
                 <a href="" class="btn btn-dark mt-2 w-100">
                     <i class="bi bi-file-earmark-pdf"></i> Gerar PDF
-                </a>
+                </a> --}}
             </div>
 
             {{-- TOTAL GERAL --}}

@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('precos', function (Blueprint $table) {
+        Schema::create('avaliacoes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('preco');
-            $table->foreignId('compra_id')->constrained();
             $table->timestamps();
         });
     }
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('precos');
+        Schema::dropIfExists('avaliacoes');
     }
 };

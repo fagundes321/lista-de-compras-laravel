@@ -31,7 +31,7 @@ class ComprasController extends Controller
 
 
         $totalCompras = Compras::totalCompras();
-        return view('compras.index')
+        return view('compras.index_compra')
             ->with('compras', $compras)
             ->with('mercados', $mercados)
             ->with('cidades', $cidades)
@@ -45,7 +45,7 @@ class ComprasController extends Controller
 
         $mercados = Mercados::all();
         $cidades = Cidades::all();
-        return view("compras.create")->with('mercados', $mercados)->with('cidades', $cidades);
+        return view("compras.create_compra")->with('mercados', $mercados)->with('cidades', $cidades);
     }
 
 
@@ -74,7 +74,7 @@ class ComprasController extends Controller
 
         $mercados = Mercados::all();
         $cidades =  Cidades::all();
-        return view('compras.edit')
+        return view('compras.edit_compra')
             ->with('compra', $compra)
             ->with('mercados', $mercados)
             ->with('cidades', $cidades);
@@ -93,11 +93,7 @@ class ComprasController extends Controller
         return to_route('compras.index')->with('mensagem.sucesso', "Item {$compra->nome} Atualizado");
     }
 
-    public function mercado(Request $request)
-    {
 
-        return view('compras.mercado');
-    }
 
 
 
