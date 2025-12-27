@@ -14,6 +14,10 @@
                     + Nova Compra
                 </a>
 
+                <a href="" class="btn btn-dark">
+                    <i class="bi bi-star-fill me-1"></i> Avaliações
+                </a>
+
                 <a href="{{ route('mercado.index') }}" class="btn btn-outline-dark ">
                     Mercados
                 </a>
@@ -54,8 +58,7 @@
                         <tbody class="table-group-divider ">
 
                             @forelse ($compras as $compra)
-
-                                <tr >
+                                <tr>
                                     <td>{{ $loop->iteration }}</td>
 
                                     <td class="fw-semibold text-start">
@@ -115,7 +118,7 @@
 
                                             <div class="small text-muted">
                                                 {{ $compra->quantidade }} {{ $compra->unidade }}
-                                                × R$ {{ number_format((float)$compra->preco, 2, ',', '.') }}
+                                                × R$ {{ number_format((float) $compra->preco, 2, ',', '.') }}
                                             </div>
                                         </div>
                                         {{-- MOBILE --}}
@@ -127,7 +130,7 @@
 
                                             <div class="text-muted">
                                                 {{ $compra->quantidade }} {{ $compra->unidade }}
-                                                × {{ number_format((float)$compra->preco, 2, ',', '.') }}
+                                                × {{ number_format((float) $compra->preco, 2, ',', '.') }}
                                             </div>
 
                                         </div>
